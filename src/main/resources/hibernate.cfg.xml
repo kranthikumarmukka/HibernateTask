@@ -15,6 +15,15 @@
  		<property name="hibernate.hbm2ddl.auto">update</property><!-- create,create-drop,update -->
  		
 		<mapping class="com.hibernate.model.User" />
+		
+		<mapping class="com.hibernate.model.onetoone.Stock" />
+		<mapping class="com.hibernate.model.onetoone.StockDetail" />
+
+		<mapping class="com.hibernate.model.onetomany.Course" />
+		<mapping class="com.hibernate.model.onetomany.Student" />
+		<mapping class="com.hibernate.model.onetomany.Topic" />
+		
+		
 
 	</session-factory>
 </hibernate-configuration>
