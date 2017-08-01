@@ -1,0 +1,53 @@
+OnetoOne:
+
+Hibernate: drop table if exists Passport
+Hibernate: drop table if exists Person
+Hibernate: create table Passport (personId bigint not null, issuedCountry varchar(255), occupation varchar(255), primary key (personId))
+Hibernate: create table Person (personId bigint not null auto_increment, firstName varchar(255), lastName varchar(255), primary key (personId))
+Hibernate: insert into Person (firstName, lastName) values (?, ?)
+Hibernate: insert into Passport (issuedCountry, occupation, personId) values (?, ?, ?)
+
+
+one to many:
+
+Hibernate: alter table Employee drop foreign key FKgghdys7tyys8xdoox800ujod8
+Hibernate: drop table if exists Employee
+Hibernate: drop table if exists Employer
+Hibernate: create table Employee (EmployeeId bigint not null auto_increment, dateJoined date, firstName varchar(255), lastName varchar(255), updatedDateTime datetime, EmployerId bigint, employees_ORDER integer, primary key (EmployeeId))
+Hibernate: create table Employer (EmployerId bigint not null auto_increment, company varchar(255), createdDateTime datetime, name varchar(255), updatedDateTime datetime, primary key (EmployerId))
+Hibernate: alter table Employee add constraint FKgghdys7tyys8xdoox800ujod8 foreign key (EmployerId) references Employer (EmployerId)
+Hibernate: insert into Employer (company, createdDateTime, name, updatedDateTime) values (?, ?, ?, ?)
+Hibernate: insert into Employee (dateJoined, EmployerId, firstName, lastName, updatedDateTime) values (?, ?, ?, ?, ?)
+Hibernate: insert into Employee (dateJoined, EmployerId, firstName, lastName, updatedDateTime) values (?, ?, ?, ?, ?)
+Hibernate: update Employee set employees_ORDER=? where EmployeeId=?
+Hibernate: update Employee set employees_ORDER=? where EmployeeId=?
+
+many to many:
+
+Hibernate: create table Doctor (doctorId bigint not null auto_increment, name varchar(255), specialist varchar(255), primary key (doctorId))
+Hibernate: create table Employee (EmployeeId bigint not null auto_increment, dateJoined date, firstName varchar(255), lastName varchar(255), updatedDateTime datetime, EmployerId bigint, employees_ORDER integer, primary key (EmployeeId))
+Hibernate: create table Employer (EmployerId bigint not null auto_increment, company varchar(255), createdDateTime datetime, name varchar(255), updatedDateTime datetime, primary key (EmployerId))
+Hibernate: create table Patient (patientId bigint not null auto_increment, dateAdmitted date, name varchar(255), primary key (patientId))
+Hibernate: create table Patient_Doctor (PatientId bigint not null, DoctorId bigint not null)
+Hibernate: alter table Employee add constraint FKgghdys7tyys8xdoox800ujod8 foreign key (EmployerId) references Employer (EmployerId)
+Hibernate: alter table Patient_Doctor add constraint FKon8c8joyhy0l5083oxp76xi7d foreign key (DoctorId) references Doctor (doctorId)
+Hibernate: alter table Patient_Doctor add constraint FK7djvxdwxo9x2u5namjxf4hjnt foreign key (PatientId) references Patient (patientId)
+Hibernate: insert into Patient (dateAdmitted, name) values (?, ?)
+Hibernate: insert into Doctor (name, specialist) values (?, ?)
+Hibernate: insert into Patient_Doctor (DoctorId, PatientId) values (?, ?)
+
+Inheritance(single tabel strategy):
+Hibernate: drop table if exists hibernate_sequence
+Hibernate: drop table if exists VEHICLE
+Hibernate: create table hibernate_sequence (next_val bigint)
+Hibernate: insert into hibernate_sequence values ( 1 )
+Hibernate: create table VEHICLE (VEHICLE_TYPE varchar(31) not null, VEHICLE_ID integer not null, VEHICLE_NAME varchar(255), STEERING_TYPE varchar(255), primary key (VEHICLE_ID))
+Hibernate: select next_val as id_val from hibernate_sequence for update
+Hibernate: update hibernate_sequence set next_val= ? where next_val=?
+Hibernate: select next_val as id_val from hibernate_sequence for update
+Hibernate: update hibernate_sequence set next_val= ? where next_val=?
+Hibernate: select next_val as id_val from hibernate_sequence for update
+Hibernate: update hibernate_sequence set next_val= ? where next_val=?
+Hibernate: insert into VEHICLE (VEHICLE_NAME, VEHICLE_TYPE, VEHICLE_ID) values (?, 'Vehicle', ?)
+Hibernate: insert into VEHICLE (VEHICLE_NAME, STEERING_TYPE, VEHICLE_TYPE, VEHICLE_ID) values (?, ?, 'Bike', ?)
+Hibernate: insert into VEHICLE (VEHICLE_NAME, STEERING_TYPE, VEHICLE_TYPE, VEHICLE_ID) values (?, ?, 'Car', ?)
