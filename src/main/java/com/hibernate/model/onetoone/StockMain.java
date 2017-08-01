@@ -16,25 +16,25 @@ public class StockMain {
 
 		session.beginTransaction();
 
-//		Stock stock = new Stock();
-//
-//		stock.setStockCode("7052");
-//		stock.setStockName("PADINI");
-//
-//		StockDetail stockDetail = new StockDetail();
-//		stockDetail.setCompanyName("PADINI Holding Malaysia");
-//		stockDetail.setCompanyDesc("one stop shopping");
-//		stockDetail.setRemark("vinci vinci");
-//		stockDetail.setListedDateTime(LocalDateTime.now());
-//
-//		stock.setStockDetail(stockDetail);
-//		stockDetail.setStock(stock);
-//
-//		session.save(stock);
+		Stock stock = new Stock();
+
+		stock.setStockCode("7052");
+		stock.setStockName("PADINI");
+
+		StockDetail stockDetail = new StockDetail();
+		stockDetail.setCompanyName("PADINI Holding Malaysia");
+		stockDetail.setCompanyDesc("one stop shopping");
+		stockDetail.setRemark("vinci vinci");
+		stockDetail.setListedDateTime(LocalDateTime.now());
+
+		stock.setStockDetail(stockDetail);
+		stockDetail.setStock(stock);
+
+		session.save(stock);
 //		
-		Stock s = session.get(Stock.class, 1L);
-		System.out.println(s.getStockCode());
-		System.out.println(s.getStockDetail().getCompanyName());
+//		Stock s = session.get(Stock.class, 1L);
+//		System.out.println(s.getStockCode());
+//		System.out.println(s.getStockDetail().getCompanyName());
 		session.getTransaction().commit();
 		session.close();
 		sf.close();

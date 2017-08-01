@@ -10,19 +10,13 @@
 		<!-- Assume javatraining is the database name -->
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernatedb</property>
 		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.connection.password">root</property>
+		<property name="hibernate.connection.password">Srinivasa@1</property>
 		<property name="hibernate.show_sql">true</property>
- 		<property name="hibernate.hbm2ddl.auto">update</property><!-- create,create-drop,update -->
- 		
-		<mapping class="com.hibernate.model.User" />
-		
-		<mapping class="com.hibernate.model.onetoone.Stock" />
-		<mapping class="com.hibernate.model.onetoone.StockDetail" />
-
-		<mapping class="com.hibernate.model.onetomany.Course" />
-		<mapping class="com.hibernate.model.onetomany.Student" />
-		<mapping class="com.hibernate.model.onetomany.Topic" />
-		
+ 		<property name="hibernate.hbm2ddl.auto">create</property><!-- create,create-drop,update -->
+ 		<property name="hibernate.connection.autocommit">true</property>
+		<mapping class="com.hibernate.inheritance.Vehicle"/>
+		<mapping class="com.hibernate.inheritance.TwoWheeler"/>
+		<mapping class="com.hibernate.inheritance.FourWheeler"/>
 		
 
 	</session-factory>
